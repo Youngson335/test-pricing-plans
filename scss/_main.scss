@@ -1,0 +1,24 @@
+@mixin setting-font($weight, $size, $line) {              
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $line;
+}
+.main {    
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    flex-direction: column;
+    &__title {
+        &-h1 {         
+            @include setting-font(700, 56px, 72px);               
+            margin-bottom: 32px;         
+        }
+    }
+    &__description {
+        margin-bottom: 54px;
+        &-p {          
+            @include setting-font(400, 18px, 28.8px);            
+            color: $white;
+        }
+    }
+}
