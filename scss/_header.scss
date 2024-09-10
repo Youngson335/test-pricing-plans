@@ -1,0 +1,65 @@
+@mixin position-content($display, $justify, $align) {
+    display: $display;
+    justify-content: $justify;
+    align-items: $align;
+}
+.header {
+    @include position-content(flex, space-between, center);    
+    padding: 12px;
+    margin-bottom: 90px;
+    &__search {
+        @include position-content(flex, space-between, center);        
+        width: 100%;
+        max-width: 391px;
+        padding: 8px 16px;
+        border: 1px solid $white;
+        border-radius: 50px;
+        &-input {
+            width: 100%;
+            background: none;
+            border: none;
+            color: $white;
+            &::placeholder {
+                color: $white;
+                font-size: 16px;
+                line-height: 19px;
+            }
+            &:focus {
+                outline: none;
+            }
+        }
+        &-icon {
+            padding-right: 16px;
+        }
+    } 
+    &__menu {
+        text-wrap: nowrap;
+        margin-left: 50px;
+    }
+}
+.menu {    
+    &__items {
+        @include position-content(flex, center, center);        
+        list-style-type: none;        
+    }
+    &__item {
+        cursor: pointer;        
+        padding: 6px 16px;
+        transition: all .3s ease;        
+        &:nth-last-child(2) {
+            border-left: 1px solid $light-gray;
+        }
+        &:last-child{ 
+            font-weight: 700;
+            border: 1px solid $white;
+            border-radius: 4px;     
+            &:hover {
+                background-color: $white;
+                color: $hover-blue;
+            }    
+        }   
+        &:hover {
+            color: $light-gray;
+        }     
+    }   
+}

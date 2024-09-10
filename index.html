@@ -4,9 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <title>pricing-plans</title>
 </head>
 <body>
-    
+    <div class="wrapper">
+        <header class="header container">
+            <div class="header__search">
+                <img class="header__search-icon" src="./assets/icons/search-icon.svg" alt="">
+                <input class="header__search-input" type="text" placeholder="Search for courses, lessons, resources an...">
+            </div>
+            <nav class="header__menu">
+                <ul class="menu__items">
+                    <li class="menu__item">All Courses</li>
+                    <li class="menu__item">For Business</li>
+                    <li class="menu__item">Log In</li>
+                    <li class="menu__item">Get Started</li>
+                </ul>
+            </nav>
+        </header>
+        <main class="main container">
+            <div class="main__title">
+                <h1 class="main__title-h1">Pricing Plans</h1>
+            </div>
+            <div class="main__description">
+                <p class="main__description-p">Upgrade your skills. Choose a plan that works for your budget and career goals.</p>
+            </div>
+            
+            <section class="subscription">
+                <div class="subscription__basic">
+                    <div class="subscription__title">                        
+                        <p class="subscription__title-p">Most popular!</p>                        
+                    </div>
+                    <div class="subscription__info">                        
+                        <div class="subscription__option">
+                            <div class="option__description">
+                                <p class="option__description-p">All Access Membership</p>
+                            </div>
+                            <div class="option__version">
+                                <p class="option__version-p">Basic</p>
+                            </div>
+                        </div>  
+                        <div class="subscription__description">
+                            <p class="subscription__description-p">Includes all courses from many programs</p>
+                        </div> 
+                        <div class="subscription__plan">
+                            <div class="plan__title">
+                                <p>Pick your plan:</p>
+                            </div>
+                            <div class="plan__selection">
+                                <div class="plan__item plan__active">
+                                    <div class="plan__input">
+                                        <input type="radio" id="radio1" name="plan">
+                                        <label for="radio1"></label>
+                                    </div>   
+                                    <div class="plan__price">
+                                        <div class="plan__sum"><p>$47</p></div>
+                                        <div class="plan__month"><p>/month</p></div>
+                                    </div>                                    
+                                    <div class="plan__annually"><p>(pay annually — $564 / year)</p></div>
+                                    <div class="plan__discount"><p>Save 30%!</p></div>
+                                </div>     
+                                <div class="plan__item plan__not-active">
+                                    <div class="plan__input">
+                                        <input type="radio" id="radio2" name="plan">
+                                        <label for="radio2"></label>
+                                    </div>   
+                                    <div class="plan__price">
+                                        <div class="plan__sum"><p>$87</p></div>
+                                        <div class="plan__month"><p>/month</p></div>
+                                    </div>                                    
+                                    <div class="plan__annually"><p>(pay per month)</p></div>                                    
+                                </div>                           
+                            </div>                            
+                        </div>
+                        <div class="subscription__send">
+                            <button class="subscription__send-button">Enroll Now</button>
+                        </div>
+                        <div class="subscription__include">
+                            <div class="include__title">
+                                <p>Includes:</p>
+                            </div>
+                            <div class="include__items">
+                                <!-- внедряется из includes.js -->
+                            </div>
+                        </div>
+                    </div>                                      
+                </div>
+                <div class="subscription__full">
+                    <div class="subscription__title">                        
+                        <p class="subscription__title-p">Most benefits!</p>                        
+                    </div>
+                    <div class="subscription__info">                        
+                        <div class="subscription__option">
+                            <div class="option__description">
+                                <p class="option__description-p">All Access Membership</p>
+                            </div>
+                            <div class="option__version">
+                                <p class="option__version-p">Full-Immersion</p>
+                            </div>
+                        </div>
+                        <div class="subscription__description">
+                            <p class="subscription__description-p">Everything in the Basic plan, plus more</p>
+                        </div> 
+                        <div class="subscription__plan"></div>
+                    </div>                    
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="./includes.js"></script>
 </body>
 </html>

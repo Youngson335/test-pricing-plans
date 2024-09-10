@@ -1,0 +1,256 @@
+@mixin default-setting {
+    background: $white;
+    max-width: 544px;
+    width: calc(100% - 272px);
+}
+@mixin setting-font($weight, $size, $line) {
+    text-align: center;               
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $line;
+}
+@mixin position-content($display, $justify, $align) {
+    display: $display;
+    justify-content: $justify;
+    align-items: $align;
+}
+.subscription {
+    width: 100%;
+    @include position-content(flex, space-between, center);    
+    color: $dark-blue;
+    margin-bottom: 90px;
+    @media (max-width: 1000px) {
+        flex-direction: column;
+    }
+    &__basic {        
+        @include default-setting();
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.06);
+        & .subscription__title {
+            background: $blue;
+        }    
+        @media (max-width: 1000px) {
+            margin-bottom: 30px;
+        }    
+    }
+    &__full {
+        @include default-setting();
+        margin-left: 32px;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-top: 102px;        
+        box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.06);
+        & .subscription__title {
+            background-color: $dark-blue;
+        }
+        @media (max-width: 1000px) {
+            margin-top: 0px;
+            margin-left: 0px;
+        }
+    }
+    &__title {
+        @include setting-font(700, 14px, 22.4px);        
+        padding: 5px 0;
+        color: $white;        
+    }
+    &__info {
+        padding: 48px;
+        @media (max-width: 1000px) {
+            padding: 28px;
+        }
+    }   
+    &__plan {
+        margin-bottom: 24px;
+    }     
+    &__option {
+        margin-bottom: 24px;
+    }
+    &__description {
+        color: $gray;
+        margin-bottom: 24px;
+    }
+    &__send {
+        padding-bottom: 24px;
+        border-bottom: 1px solid $light-gray;
+        margin-bottom: 24px;
+        &-button {
+            color: $white;
+            background: $blue;            
+            box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.06);
+            border: none;
+            border-radius: 4px;
+            padding: 10px 16px;            
+            font-size: clamp(12px, 1vw, 18px);
+            font-weight: 700;
+            cursor: pointer;
+            border: 1px solid $blue;
+            transition: all .2s ease;
+            &:hover {
+                background: $white;
+                color: $blue;
+                transition: all .2s ease;
+            }
+            &:active {
+                scale: 1.07;
+            }
+        }
+    }
+}
+.option {
+    &__description {
+        margin-bottom: 4px;
+        &-p {            
+            @include setting-font(400, 16px, 25.6px);            
+            line-height: 25.6px;
+        }
+    }
+    &__version {
+        @include setting-font(700, 24px, 32px);        
+    }
+}
+.plan {
+    &__title {        
+        @include setting-font(700, 18px, 25.2px);        
+    }
+    &__selection {
+        @include position-content(flex, center, start);        
+        flex-direction: column;
+    }
+    &__item {
+        @include position-content(flex, center, baseline);        
+    }
+    &__input {        
+        & input[type="radio"] {
+            display: none;
+            &:checked + label {
+                background-color: $blue;
+                border: 2px solid $blue;
+                
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 50%;
+                    background-color:$white;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+    
+        & label {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: $light-gray;
+            position: relative;
+            cursor: pointer;
+        }
+    }
+    &__price {
+        @include position-content(flex, center, end);        
+        margin-left: 15px;
+    }
+    &__sum {
+        & p {
+            @include setting-font(700, clamp(15px, 0.7153rem + 1.6368vw, 32px), 44px);            
+            color: $dark-blue;
+        }
+    }
+    &__month {
+        & p {             
+            @include setting-font(700, clamp(10px, 1.4vw, 14px), 32px);            
+        }
+    }    
+    &__annually {   
+        & p {
+            @include setting-font(400, 14px, 22.4px);            
+            color: $dark-blue;
+            text-wrap: nowrap;
+            margin-left: 8px;
+        }             
+    }
+    &__discount {  
+        p {            
+            @include setting-font(400, clamp(7px, 1vw, 14px), 22.4px);            
+            color: $blue;
+            text-wrap: nowrap;
+        }          
+        background: $lilac;
+        padding: 0 8px;
+        border-radius: 16px;
+        margin-left: 8px;
+    }
+    &__not-active {
+        & p {
+            color: rgba(114, 116, 119, 1) !important;
+        }        
+    }    
+}
+
+.include {
+    &__title {
+        margin-bottom: 24px;
+        & p {
+            font-size: 16px;
+            font-weight: 400;
+            color: $gray;
+        }
+    }
+    &__items {
+        @include position-content(flex, start, start);        
+        flex-direction: column;        
+    }
+    &__block {
+        @include position-content(flex, center, center);
+        position: relative;         
+        margin-bottom: 25px;
+        flex-direction: row;
+        &-icon {
+            cursor: pointer;
+        }
+        & img {
+            margin-right: 12px;            
+        }        
+        & p {
+            margin-right: 6px;
+        }
+    }
+}
+  
+  
+/* Стили для кастомной подсказки */
+.custom-tooltip {
+position: absolute;
+right: -190px; 
+top: 50%;
+transform: translateY(-50%); 
+background-color: rgb(0, 0, 0);
+color: $white;
+padding: 16px;
+border-radius: 4px;
+font-size: 12px;
+white-space: nowrap;
+z-index: 1000;
+display: inline-block;
+transition: opacity 0.3s ease;
+user-select: none; 
+max-width: 191px;
+text-wrap: wrap;
+}
+
+.custom-tooltip::after {
+content: '';
+position: absolute;
+left: -10px;
+top: 50%;
+transform: translateY(-50%);
+border-width: 6px;
+border-style: solid;
+border-color: transparent $tooltip transparent transparent; 
+}
+  
