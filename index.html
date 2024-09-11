@@ -55,9 +55,9 @@
                                 <p>Pick your plan:</p>
                             </div>
                             <div class="plan__selection">
-                                <div class="plan__item plan__active">
+                                <div class="plan__item">
                                     <div class="plan__input">
-                                        <input type="radio" id="radio1" name="plan">
+                                        <input class="plan-input" type="radio" id="radio1" name="plan" checked>
                                         <label for="radio1"></label>
                                     </div>   
                                     <div class="plan__price">
@@ -69,7 +69,7 @@
                                 </div>     
                                 <div class="plan__item plan__not-active">
                                     <div class="plan__input">
-                                        <input type="radio" id="radio2" name="plan">
+                                        <input class="plan-input" type="radio" id="radio2" name="plan">
                                         <label for="radio2"></label>
                                     </div>   
                                     <div class="plan__price">
@@ -108,14 +108,95 @@
                         </div>
                         <div class="subscription__description">
                             <p class="subscription__description-p">Everything in the Basic plan, plus more</p>
-                        </div> 
-                        <div class="subscription__plan"></div>
+                        </div>                         
+                        <div class="subscription__plan full__basic">                            
+                            <div class="plan__selection">                                   
+                                <div class="plan__item">                                     
+                                    <div class="plan__price">
+                                        <div class="plan__sum"><p>$77</p></div>
+                                        <div class="plan__month"><p>/month</p></div>
+                                    </div>                                    
+                                    <div class="plan__annually"><p>(pay annually — $924 / year)</p></div>                                    
+                                </div>                           
+                            </div>                            
+                        </div>  
+                        <div class="subscription__send full__basic">
+                            <button class="subscription__send-button">Enroll Now</button>
+                        </div>    
+                        <div class="subscription__include">
+                            <div class="include__title">
+                                <p>Everything in Basic, plus:</p>
+                            </div>
+                            <div class="include__items full__includes">
+                                <!-- внедряется из includes.js -->
+                            </div>
+                        </div>                  
                     </div>                    
                 </div>
             </section>
+
+            <section class="subscription-table">
+                <table class="subscription-table__comparison">
+                    <thead class="subscription-table__header">
+                        <tr class="subscription-table__row">
+                            <th class="subscription-table__cell"></th>
+                            <th class="subscription-table__cell subscription-table__cell--highlighted">All-Access Membership <br> <strong>Basic</strong> <br> $564 / year</th>
+                            <th class="subscription-table__cell subscription-table__cell--empty">All-Access Membership <br> <strong>Full-Immersion</strong> <br> $924 / year</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subscription-body" class="subscription-table__body">
+                        <!-- внедряем из table.js  -->
+                    </tbody>
+                    <thead class="subscription-table__header">
+                        <tr class="subscription-table__row table-price">
+                            <th class="subscription-table__cell table-price__cell"></th>
+                            <th class="subscription-table__cell table-price__cell table-price__cell--basic">
+                                <div class="subscription-table__block">
+                                    <p class="subscription-table__block--title"><strong>Basic</strong></p>                                                      
+                                    <p class="subscription-table__block--descript">$564 / year</p>
+                                    <button class="subscription__send-button">Enroll Now</button>
+                                </div>                                
+                            </th>
+                            <th class="subscription-table__cell table-price__cell table-price__cell--full">
+                                <div class="subscription-table__block">
+                                    <p class="subscription-table__block--title"><strong>Full</strong></p>
+                                    <p class="subscription-table__block--descript">$564 / year</p>
+                                    <button class="subscription__send-button">Enroll Now</button>
+                                </div>                                
+                            </th>
+                        </tr>
+                    </thead>                    
+                </table>
+            </section>
+
+            <section class="accordion">
+                <div class="accordion__container">
+                    <div class="accordion__title">
+                        <h3 class="accordion__title-h3">Frequently Asked Questions</h3>
+                    </div>
+                    <div class="accordion__items">
+                        <!-- внедряем из accordion.js -->
+                    </div>
+            </section>
+
+            <section class="review">
+                <div class="review__title">
+                    <h3 class="review__title-h3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at erat eget eros aliquam mattis </h3>
+                </div>
+                <div class="review__container">
+
+                </div>
+            </section>
+            
+            
         </main>
     </div>
 
-    <script src="./includes.js"></script>
+    <script src="./scripts/includes.js" type="module"></script>
+    <script src="./scripts/checkedPlan.js"></script>
+    <script src="./scripts/table.js" type="module"></script>
+    <script src="./scripts/showToltip.js" type="module"></script>
+    <script src="./scripts/accordion.js"></script>
+    <script src="./scripts/review.js"></script>
 </body>
 </html>

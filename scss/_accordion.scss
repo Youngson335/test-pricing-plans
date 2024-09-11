@@ -1,0 +1,74 @@
+@mixin default-position($display, $justify, $align) {
+    display: $display;
+    justify-content: $justify;
+    align-items: $align;
+}
+@mixin setting-font($size, $weight, $line, $color) {
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $line;
+    color: $color;
+}
+.accordion {    
+    @include default-position(flex, center, center);    
+    width: 100%;
+    margin: 0 auto;    
+    &__container {
+        @include default-position(flex, center, start);        
+        width: 100%;
+        margin: 0 auto;
+        max-width: 929px;        
+        flex-direction: column;
+        padding: 122px;
+        background: $white;
+        box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.06);
+        margin-bottom: 80px;
+    }
+    &__title {
+        margin-bottom: 48px;
+        width: 100%;
+        text-align: center;
+        &-h3 {
+            @include setting-font(32px, 700, 44px, $dark-blue);
+        }
+    }
+    &__items {
+        width: 100%;        
+    }
+    &__item {
+        border-bottom: 1px solid $soft-gray;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+    &__question {
+        @include default-position(flex, space-between, center);        
+        flex-direction: row;
+        &-img {
+            order: 2;
+            cursor: pointer;
+        }
+        &-p {
+            order: 1;     
+            @include setting-font(18px, 700, 24.51px, $gray-medium);
+        }
+    }
+    &__answer {
+        display: none;
+        &-p {
+            @include setting-font(18px, 700, 24.51px, $dark-blue);
+            margin-top: 10px;
+        }
+    }
+}
+// анимация при клике
+.active__plus {
+    animation: clickPlusIcon .5s ease;
+    @keyframes clickPlusIcon {
+        0%{
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(90deg);
+        }
+    }
+}
