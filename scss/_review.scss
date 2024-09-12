@@ -1,0 +1,101 @@
+@mixin default-position($display, $justify, $align) {
+    display: $display;
+    justify-content: $justify;
+    align-items: $align;
+}
+@mixin setting-font($size, $weight, $line, $color) {               
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $line;
+    color: $color;
+}
+@mixin setting-circle($width, $height, $radius) {
+    width: $width;
+    height: $height;
+    border-radius: $radius;
+}
+
+.review {    
+    margin-bottom: 59px;
+    position: relative;
+    &__title {
+        @include setting-font(32px, 700, 44px, $dark-blue);
+        margin-bottom: 62px;
+        text-align: center;
+    }
+    &__controls {
+        @include default-position(flex, space-between, center);        
+        position: absolute;
+        height: 100%;
+        width: 100%;           
+    }    
+    &__control {
+        @include default-position(flex, center, center);
+        @include setting-circle(64px, 64px, 50%);
+        background: $blue;                   
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        user-select: none;
+        box-shadow: 0px 10px 20px 0px rgb(50 113 210 / 35%);
+        &--prev {
+            
+            & img {
+                transform: rotate(180deg);
+            }
+        }
+        &--next {
+            
+        }
+    }
+    &__wrapper {
+        position: relative;
+    }
+    &__item {
+        @include default-position(flex, center, start);
+        flex-direction: column;
+        max-width: 350px;
+        padding: 32px;
+        background-color: $white;
+        border-radius: 8px;
+        margin-left: 35px;
+        transition: transform 0.3s ease-in-out;
+        &:first-child {
+            margin-left: 0px;
+        }
+    }    
+    &__container {
+        @include default-position(flex, space-between, center);
+        max-width: 1118px;        
+        width: 100%;
+        overflow: hidden;
+    }
+    &__avatar {
+        @include setting-circle(47px, 47px, 50%);        
+        background-color: $avatar;        
+        margin-right: 25px;
+    }
+    &__user {
+        &-info {
+            @include default-position(flex, start, center);
+            width: 100%;
+            margin-bottom: 22px;
+        }
+        &-p {
+            @include setting-font(18px, 600, 24.51px, $tooltip);                     
+            &:last-child {
+                @include setting-font(16px, 400, 24.84px, $aquatic);
+            }
+        }        
+    }
+    &__description {
+        @include setting-font(16px, 400, 24.84px, $gray);
+        margin-bottom: 16px;
+    }
+    &__read {
+        &-p {
+            @include setting-font(16px, 700, 24.84px, $dark-blue);
+            cursor: pointer;            
+        }        
+    }    
+}

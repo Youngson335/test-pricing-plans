@@ -1,7 +1,4 @@
-// вывод комменатриев
-
 const reviewContainer = document.querySelector(".review__container");
-
 const reviewData = [
   {
     id: 1,
@@ -19,47 +16,73 @@ const reviewData = [
   },
   {
     id: 3,
-    name: "John Doe",
+    name: "Denis Doe",
     job: "Financial Controller",
     review:
       "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at erat eget eros aliquam mattis ut vehicula sapien. Nam a tortor nulla. Sed sed erat eget enim feugiat dapibus et non justo ...”",
   },
+  {
+    id: 4,
+    name: "Denis Doe",
+    job: "Frontend Developer",
+    review:
+      "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at erat eget eros aliquam mattis ut vehicula sapien. Nam a tortor nulla. Sed sed erat eget enim feugiat dapibus et non justo ...”",
+  },
+  {
+    id: 5,
+    name: "Denis Doe",
+    job: "Frontend Developer",
+    review:
+      "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at erat eget eros aliquam mattis ut vehicula sapien. Nam a tortor nulla. Sed sed erat eget enim feugiat dapibus et non justo ...”",
+  },
+  {
+    id: 6,
+    name: "Denis Doe",
+    job: "Frontend Developer",
+    review:
+      "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at erat eget eros aliquam mattis ut vehicula sapien. Nam a tortor nulla. Sed sed erat eget enim feugiat dapibus et non justo ...”",
+  },
 ];
+const itemsPerPage = 3;
+let currentPage = 0;
 
-reviewData.forEach((item) => {
-  const reviewItem = document.createElement("div");
-  reviewItem.classList.add("review__item");
+function displayReviews() {
+  reviewContainer.innerHTML = "";
+  const start = currentPage * itemsPerPage;
+  const end = start + itemsPerPage;
+  reviewData.slice(start, end).forEach((item) => {
+    const reviewItem = document.createElement("div");
+    reviewItem.className = "review__item";
+    reviewItem.innerHTML = `
+      <div class="review__user-info">
+        <div class="review__avatar"></div>
+        <div class="review__user">
+          <p class="review__user-p">${item.name}</p>
+          <p class="review__user-p">${item.job}</p>
+        </div>
+      </div>
+      <div class="review__description">${item.review}</div>
+      <div class="review__read"><p class="review__read-p"><strong>Read more</strong></p></div>
+    `;
+    reviewContainer.appendChild(reviewItem);
+  });
+}
 
-  const reviewUserInfo = document.createElement("div");
-  reviewUserInfo.classList.add("review__user-info");
+document
+  .querySelector(".review__control--prev")
+  .addEventListener("click", () => {
+    currentPage = Math.max(0, currentPage - 1);
+    displayReviews();
+  });
 
-  const reviewUser = document.createElement("div");
-  reviewUser.classList.add("review__user");
+document
+  .querySelector(".review__control--next")
+  .addEventListener("click", () => {
+    currentPage = Math.min(
+      reviewData.length / itemsPerPage - 1,
+      currentPage + 1
+    );
+    displayReviews();
+  });
 
-  const reviewAvatar = document.createElement("div");
-  reviewAvatar.classList.add("review__avatar");
-
-  const reviewDescript = document.createElement("div");
-  reviewDescript.classList.add("review__description");
-
-  const reviewRead = document.createElement("div");
-  reviewRead.classList.add("review__read");
-
-  const userName = document.createElement("p");
-  userName.innerText = item.name;
-
-  const descriptText = document.createElement("review");
-  descriptText.innerText = item.review;
-
-  reviewUserInfo.append(reviewAvatar);
-  reviewUser.append(userName);
-  reviewUserInfo.append(reviewUser);
-
-  reviewDescript.append(descriptText);
-
-  reviewItem.append(reviewUserInfo);
-  reviewItem.append(reviewDescript);
-  reviewItem.append(reviewRead);
-
-  reviewContainer.appendChild(reviewItem);
-});
+displayReviews();
